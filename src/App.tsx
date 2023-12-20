@@ -44,7 +44,7 @@ function App() {
 			</h1>
 			<div className='max-w-2xl w-full mt-8 mb-16'>
 				<p className='text-gray-400 mb-2 text-left'>
-					{`1) Please enter your respective H and P code numbers below. Separate them by "-" and connect statements by "+" as used by Wikipedia.`}
+					{`1) Please enter your respective H and P code numbers below. Separate them by "-" and connect statements by "+" as used by Wikipedia. In rare cases, the combinatory P statements of Wikipedia do not follow the European Law. These will be ignored and not shown/copied.`}
 				</p>
 				<p className='text-gray-400 mb-4 text-left'>{`	Example: "225-304-315-316d-372+373-310`}</p>
 				<p className='text-gray-400 mb-4 text-left'>{`2) Check if the rendered output matches your expectations`}</p>
