@@ -5,14 +5,16 @@ import parseWikipediaInput from "./utils/parseWikipediaInput";
 import { UserData, hStatement, pStatement } from "./types";
 import parseSentence from "./utils/parseSentence";
 import HRow from "./components/HRow";
-import { testH, testP } from "./utils/testInput";
 import PRow from "./components/PRow";
 import CopyToClipboardButton from "./components/CopyToClipboardButton";
 import createElbOutput from "./utils/createElbOutput";
+import WikipediaInput from "./components/WikipediaInput";
 
 function App() {
-	const [parseInputH, setParseInputH] = useState(testH());
-	const [parseInputP, setParseInputP] = useState(testP());
+	const [parseInputH, setParseInputH] = useState("");
+	const [parseInputP, setParseInputP] = useState("");
+
+	const [statements, setStatements] = useState({ hStatements: [""], pStatements: [""] });
 
 	const [userData, setUserData] = useState<UserData>({
 		hSaetze: [],
@@ -37,6 +39,22 @@ function App() {
 		}));
 	}, [parseInputH, parseInputP]);
 
+	useEffect(() => {
+		const hTempArray = statements.hStatements
+			.map((h) => parseSentence("h", h) as hStatement)
+			.filter((h) => h !== undefined) as hStatement[];
+		const pTempArray = statements.pStatements
+			.map((p) => parseSentence("p", p) as pStatement)
+			.filter((p) => p !== undefined) as pStatement[];
+
+		setUserData((userData) => ({
+			...userData,
+			hSaetze: hTempArray,
+			pSaetze: pTempArray,
+			elbOutput: createElbOutput(hTempArray, pTempArray),
+		}));
+	}, [statements]);
+
 	return (
 		<>
 			<h1 className='text-4xl mt-4 mb-12 font-mono tracking-wider font-light'>
@@ -50,9 +68,15 @@ function App() {
 				<p className='text-gray-400 mb-4 text-left'>{`2) Check if the rendered output matches your expectations`}</p>
 				<p className='text-gray-400 mb-4 text-left'>{`3) Use the Copy-To-Clipboard button and paste it into the source code (View -> Source Code) of your ELB entry `}</p>
 			</div>
-			<div className='w-full my-8 flex flex-col justify-center items-center gap-4'>
-				<WikipediaTextInput value={parseInputH} setValue={setParseInputH} title='H-Sätze' />
-				<WikipediaTextInput value={parseInputP} setValue={setParseInputP} title='P-Sätze' />
+			<div className='w-full py-8 px-2 bg-slate-800 rounded-xl'>
+				<WikipediaInput setStatements={setStatements} />
+			</div>
+			<p className='my-8 text-lg'>{`OR`}</p>
+			<div className='w-full py-8 px-2 bg-slate-800 rounded-xl'>
+				<div className='w-full flex flex-col justify-center items-center gap-4'>
+					<WikipediaTextInput value={parseInputH} setValue={setParseInputH} title='H-Sätze' />
+					<WikipediaTextInput value={parseInputP} setValue={setParseInputP} title='P-Sätze' />
+				</div>
 			</div>
 			<div className='my-8 mx-auto'>
 				<CopyToClipboardButton elbOutput={userData.elbOutput} />

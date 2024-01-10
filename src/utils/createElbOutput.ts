@@ -2,8 +2,6 @@ import { hStatement, pStatement } from "../types";
 import pictograms from "../pictograms";
 
 export default function createElbOutput(hStatements: hStatement[], pStatements: pStatement[]) {
-	console.log(pStatements);
-
 	function pictogramElement(pictogramName: string) {
 		let imgSrc = pictograms()
 			.filter((p) => p.name === pictogramName)

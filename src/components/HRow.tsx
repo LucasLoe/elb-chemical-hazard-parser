@@ -6,7 +6,6 @@ export default function HRow(hStatement: hStatement) {
 		let imgWebSrc = pictograms()
 			.filter((p) => p.name === pictogramName)
 			.map((p) => p.imgWeb)[0];
-		console.log(pictogramName)
 		return <img key={pictogramName} src={imgWebSrc} width={100} height={100} className='object-cover h-12 w-12' />;
 	};
 
