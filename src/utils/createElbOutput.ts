@@ -11,15 +11,15 @@ export default function createElbOutput(hStatements: hStatement[], pStatements: 
 	}
 
 	function codeElement(code: string) {
-		return `<td style="border: 1px solid #ddd; padding: 8px;">${code}</td>`;
+		return `<td style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">${code}</td>`;
 	}
 
 	function textElement(text: string) {
-		return `<td style="border: 1px solid #ddd; padding: 8px;">${text}</td>`;
+		return `<td style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">${text}</td>`;
 	}
 
 	function pictogramElementList(pictogramArray: string[]) {
-		return `<td style="border: 1px solid #ddd; padding: 8px;">${pictogramArray
+		return `<td style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">${pictogramArray
 			.map(pictogramElement)
 			.join("<br>\n")}</td>`;
 	}
@@ -27,9 +27,9 @@ export default function createElbOutput(hStatements: hStatement[], pStatements: 
 	const hTable = `
         <thead>
             <tr>
-                <th style="border: 1px solid #ddd; padding: 8px;">Code</th>
-                <th style="border: 1px solid #ddd; padding: 8px;">Text</th>
-                <th style="border: 1px solid #ddd; padding: 8px;">Pictograms</th>
+                <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Code</th>
+                <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Text</th>
+                <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Pictograms</th>
             </tr>
         </thead>
         <tbody>
@@ -49,8 +49,8 @@ export default function createElbOutput(hStatements: hStatement[], pStatements: 
 	const pTable = `
         <thead>
             <tr>
-                <th style="border: 1px solid #ddd; padding: 8px;">Code</th>
-                <th style="border: 1px solid #ddd; padding: 8px;">Text</th>
+                <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Code</th>
+                <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Text</th>
             </tr>
         </thead>
         <tbody>
