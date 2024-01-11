@@ -20,3 +20,10 @@ export type pictogram = {
 	imgWeb: string;
 	imgLocal: string;
 };
+
+export type fetchStatus = "idle" | "success" | "failure" | "loading";
+
+export type appStatus = {
+	status: fetchStatus;
+	message: string;
+};

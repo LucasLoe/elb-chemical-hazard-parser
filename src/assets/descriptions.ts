@@ -8,3 +8,11 @@ export function manualGHSParsingHoverText() {
 		" as used by Wikipedia. In rare cases, the combinatory P statements of Wikipedia do not follow the European Law. These will be ignored and not shown/copied. \n Example: '225-304-315-316d-372+373-310'"
 	);
 }
+
+export function introText() {
+	return `Start by using one of the two methods of retrieving your GHS statements: Try to fetch them from Wikipedia by chemical name or copy-paste them from Wikipedia.`;
+}
+
+export function copyToClipboardExplanationText() {
+	return `Use the Copy-To-Clipboard button and paste it into the source code (View -> Source Code) of your ELB entry.`;
+}

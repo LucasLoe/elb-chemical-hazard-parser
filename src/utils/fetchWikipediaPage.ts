@@ -1,5 +1,16 @@
-export async function getGHSHazardStatements(chemical: string) {
+import { Dispatch, SetStateAction } from "react";
+import { appStatus } from "../types";
+
+export async function getGHSHazardStatements(
+	chemical: string,
+	setAppStatus: Dispatch<SetStateAction<appStatus>>
+) {
 	try {
+		setAppStatus({
+			status: "loading",
+			message: "Searching Wikipedia...",
+		});
+
 		const response = await fetch(
 			`https://en.wikipedia.org/w/api.php?origin=*&action=query&titles=${chemical}&prop=revisions&rvprop=content&format=json`,
 			{
@@ -26,8 +37,18 @@ export async function getGHSHazardStatements(chemical: string) {
 			pStatements,
 		};
 
+		setAppStatus({
+			status: "success",
+			message: "Chemical found! Check your GHS statements below.",
+		});
+
 		return hazardStatements;
 	} catch (error) {
+		setAppStatus({
+			status: "failure",
+			message:
+				"Chemical was not found in Wikipedia. Make sure spelling and whitespaces are correct.",
+		});
 		console.error("Error fetching Wikipedia content:", error);
 		return null;
 	}
@@ -52,6 +73,10 @@ function parseGHSStatements(content: string, type: "H" | "P") {
 
 		const curlyString = str.match(/\{\{([^}]+)\}\}/);
 
+		if (!curlyString) {
+			return [];
+		}
+
 		if (curlyString) {
 			curlyString[1]
 				.split("|")
@@ -66,6 +91,10 @@ function parseGHSStatements(content: string, type: "H" | "P") {
 	const filteredContent = content
 		.split("\n")
 		.filter((entry) => entry.includes(`${type}Phrases`))[0];
+
+	if (!filteredContent) {
+		return [];
+	}
 
 	return cleanPhrasesString(filteredContent);
 }

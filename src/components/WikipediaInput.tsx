@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { getGHSHazardStatements } from "../utils/fetchWikipediaPage";
 import WikipediaTextInput from "./WikipediaTextInput";
+import { appStatus } from "../types";
 
 type WikipediaInputProps = {
 	setStatements: (statements: { hStatements: string[]; pStatements: string[] }) => void;
+	setAppStatus: Dispatch<SetStateAction<appStatus>>;
 };
 
 export default function WikipediaInput(props: WikipediaInputProps) {
 	const [query, setQuery] = useState("");
+	const { setStatements, setAppStatus } = props;
 
 	async function fetchStatements(query: string) {
 		try {
-			const res = await getGHSHazardStatements(query);
+			const res = await getGHSHazardStatements(query, setAppStatus);
+			console.log(res);
 			if (res) {
-				props.setStatements(res);
+				setStatements(res);
 			}
 		} catch (error) {
 			console.error("Error fetching statements:", error);
