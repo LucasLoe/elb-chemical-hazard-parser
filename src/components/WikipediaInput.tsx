@@ -11,6 +11,7 @@ type WikipediaInputProps = {
 export default function WikipediaInput(props: WikipediaInputProps) {
 	const [query, setQuery] = useState("");
 	const { setStatements, setAppStatus } = props;
+	
 
 	async function fetchStatements(query: string) {
 		try {
@@ -29,7 +30,7 @@ export default function WikipediaInput(props: WikipediaInputProps) {
 			<WikipediaTextInput value={query} setValue={setQuery} title='Wiki query' />
 			<button
 				onClick={() => fetchStatements(query)}
-				className='bg-transparent hover:bg-amber-500 font-mono text-sm text-grey-700 hover:text-white py-2 px-4 border-2 border-amber-500 hover:border-transparent rounded'
+				className='bg-transparent hover:bg-amber-500 font-mono text-sm text-grey-700 hover:text-white py-2 px-4 border-2 border-amber-500 hover:border-transparent rounded transform active:scale-x-75 transition-transform'
 			>
 				Search
 			</button>

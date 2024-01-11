@@ -45,7 +45,12 @@ const Tooltip: React.FC<TooltipProps> = (props: TooltipProps) => {
 	const [hovered, setHovered] = useState(false);
 
 	return (
-		<div className="absolute top-2 right-2" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+		<div
+			className='absolute top-2 right-2'
+			onClick={() => setHovered(true)}
+			onMouseEnter={() => setHovered(true)}
+			onMouseLeave={() => setHovered(false)}
+		>
 			<TooltipIcon />
 			<TooltipBox text={props.text} visible={hovered} />
 			{props.children}
