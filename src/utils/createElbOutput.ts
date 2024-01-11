@@ -28,7 +28,7 @@ export default function createElbOutput(hStatements: hStatement[], pStatements: 
         <thead>
             <tr>
                 <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Code</th>
-                <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Text</th>
+                <th style="border: 1px solid #ddd; background-color: #fffff2; padding: 8px;">Text</th>
                 <th style="border: 1px solid #ddd; background-color: #ffffff; padding: 8px;">Pictograms</th>
             </tr>
         </thead>
