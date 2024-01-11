@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactNode, useState } from "react";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 interface TooltipProps {
 	children?: ReactNode;
@@ -8,7 +9,7 @@ interface TooltipProps {
 
 const TooltipOuterFrame: React.FC<{ children: ReactNode }> = ({ children }) => {
 	return (
-		<div className='w-32 h-fit p-4 rounded-xl flex justify-center items-center bg-slate-700'>
+		<div className='max-w-xl w-64 h-fit p-2 rounded-xl flex justify-center items-center bg-slate-700 z-50 relative'>
 			{children}
 		</div>
 	);
@@ -16,12 +17,12 @@ const TooltipOuterFrame: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 const TooltipInnerFrame: React.FC<{ children: ReactNode }> = ({ children }) => {
 	return (
-		<div className='rounded-xl p-2 w-full outline outline-2 outline-amber-500'>{children}</div>
+		<div className='rounded-lg p-2 w-full outline outline-2 outline-amber-500'>{children}</div>
 	);
 };
 
 const TooltipIcon = () => {
-	return <FontAwesomeIcon icon={"circle-info"} className='text-amber-500 relative' />;
+	return <FontAwesomeIcon icon={faCircleInfo} className='text-amber-500 relative w-6 h-6' />;
 };
 
 const TooltipText = ({ text }: { text: string }) => {
@@ -44,7 +45,7 @@ const Tooltip: React.FC<TooltipProps> = (props: TooltipProps) => {
 	const [hovered, setHovered] = useState(false);
 
 	return (
-		<div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+		<div className="absolute top-2 right-2" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
 			<TooltipIcon />
 			<TooltipBox text={props.text} visible={hovered} />
 			{props.children}

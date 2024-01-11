@@ -9,7 +9,7 @@ export default function CopyToClipboardButton(props: inputProps) {
 	return (
 		<button
 			onClick={() => copy(props.elbOutput)}
-			className='bg-transparent hover:bg-red-500 font-mono text-grey-700 hover:text-white py-2 px-4 border-2 border-red-500 hover:border-transparent rounded'
+			className='bg-transparent hover:bg-amber-500 font-mono text-grey-700 hover:text-white py-2 px-4 border-2 border-amber-500 hover:border-transparent rounded'
 		>
 			Copy to Clipboard
 		</button>
