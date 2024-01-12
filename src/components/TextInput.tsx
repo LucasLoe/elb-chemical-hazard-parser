@@ -4,11 +4,11 @@ type InputProps = {
 	setValue: (text: string) => void;
 };
 
-export default function WikipediaTextInput(props: InputProps) {
+export default function TextInput(props: InputProps) {
 	const { value, setValue, title } = props;
 	return (
 		<>
-			<div className='relative z-0 w-full mb-6 group text-slate-50 max-w-md'>
+			<div className='relative z-0 w-full group text-slate-50 max-w-md'>
 				<input
 					type='text'
 					step='any'

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { getGHSHazardStatements } from "../utils/fetchWikipediaPage";
-import WikipediaTextInput from "./WikipediaTextInput";
+import TextInput from "./TextInput";
 import { appStatus } from "../types";
 
 type WikipediaInputProps = {
@@ -26,8 +26,8 @@ export default function WikipediaInput(props: WikipediaInputProps) {
 	}
 
 	return (
-		<div className='w-full max-w-md mx-auto flex items-center justify-center gap-4'>
-			<WikipediaTextInput value={query} setValue={setQuery} title='Wiki query' />
+		<div className='w-full max-w-md mx-auto flex items-start justify-center gap-4'>
+			<TextInput value={query} setValue={setQuery} title='Wiki query' />
 			<button
 				onClick={() => fetchStatements(query)}
 				className='bg-transparent hover:bg-amber-500 font-mono text-sm text-grey-700 hover:text-white py-2 px-4 border-2 border-amber-500 hover:border-transparent rounded transform active:scale-x-75 transition-transform'

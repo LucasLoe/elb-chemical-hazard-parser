@@ -12,18 +12,17 @@ export default function CopyToClipboardButton(props: inputProps) {
 	}
 
 	const handleClick = () => {
-		// copy stuff
+		// click-action: copy stuff
 		copy(props.elbOutput);
-		// display "Copied" for 3 seconds and show normal button afterwards.
+		// animation handling:
 		setTimeout(() => {
-			// Set the state to true after the delay
+			// Small delay to wait the animation before changing the button text
 			setButtonText("Copied");
-
-			// Set a timeout to revert the state back to false after 3 seconds
+			// Set a timeout to revert button back to normal
 			setTimeout(() => {
 				setButtonText("Copy to Clipboard");
-			}, 3000);
-		}, 50);
+			}, 1000);
+		}, 100);
 	};
 
 	return (

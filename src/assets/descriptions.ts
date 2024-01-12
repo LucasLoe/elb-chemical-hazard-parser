@@ -10,9 +10,13 @@ export function manualGHSParsingHoverText() {
 }
 
 export function introText() {
-	return `Start by using one of the two methods of retrieving your GHS statements: Try to fetch them from Wikipedia by chemical name or copy-paste them from Wikipedia.`;
+	return `Start by using one of the two methods of retrieving your GHS statements: Try to fetch them from Wikipedia by chemical name or copy-paste them from Wikipedia. Click ⓘ for more information.`;
 }
 
 export function copyToClipboardExplanationText() {
 	return `Use the Copy-To-Clipboard button and paste it into the source code (View -> Source Code) of your ELB entry.`;
+}
+
+export function WebsiteHeadingText(){
+	return "Wikipedia to eLab Generator"
 }
