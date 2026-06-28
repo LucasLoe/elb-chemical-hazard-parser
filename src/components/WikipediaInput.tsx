@@ -16,7 +16,6 @@ export default function WikipediaInput(props: WikipediaInputProps) {
 	async function fetchStatements(query: string) {
 		try {
 			const res = await getGHSHazardStatements(query, setAppStatus);
-			console.log(res);
 			if (res) {
 				setStatements(res);
 			}
@@ -26,11 +25,11 @@ export default function WikipediaInput(props: WikipediaInputProps) {
 	}
 
 	return (
-		<div className='w-full max-w-md mx-auto flex items-start justify-center gap-4'>
+		<div className='flex w-full flex-col gap-3 sm:flex-row sm:items-end'>
 			<TextInput value={query} setValue={setQuery} title='Wiki query' />
 			<button
 				onClick={() => fetchStatements(query)}
-				className='bg-transparent hover:bg-amber-500 font-mono text-sm text-grey-700 hover:text-white py-2 px-4 border-2 border-amber-500 hover:border-transparent rounded transform active:scale-x-75 transition-transform'
+				className='h-11 shrink-0 border border-primary bg-primary px-5 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-[background-color,transform] hover:bg-chart-2 active:translate-y-px focus:outline-none focus:ring-2 focus:ring-ring/60'
 			>
 				Search
 			</button>

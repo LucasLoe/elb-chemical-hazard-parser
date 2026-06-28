@@ -6,12 +6,12 @@ export function PRow(pStatement: pStatement) {
 	if (pStatement === undefined) return null;
 
 	return (
-		<div key={pStatement.code} className='w-full flex flex-row justify-around'>
-			<div className='w-2/12'>
-				<p>{pStatement.code}</p>
+		<div key={pStatement.code} className='grid w-full gap-3 border-b border-border/70 py-4 md:grid-cols-[7rem_1fr]'>
+			<div>
+				<p className='font-mono text-sm text-primary'>{pStatement.code}</p>
 			</div>
-			<div className='w-10/12 text-left'>
-				<p>{pStatement.text}</p>
+			<div>
+				<p className='text-sm leading-6 text-foreground'>{pStatement.text}</p>
 			</div>
 		</div>
 	);
@@ -26,9 +26,10 @@ export function HRow(hStatement: hStatement) {
 			<img
 				key={pictogramName}
 				src={imgWebSrc}
+				alt={pictogramName}
 				width={100}
 				height={100}
-				className='object-cover h-12 w-12'
+				className='h-12 w-12 border border-border bg-white object-cover p-1'
 			/>
 		);
 	};
@@ -36,15 +37,15 @@ export function HRow(hStatement: hStatement) {
 	if (hStatement === undefined) return null;
 
 	return (
-		<div key={hStatement.code} className='w-full flex flex-row'>
-			<div className='w-2/12'>
-				<p>{hStatement.code}</p>
+		<div key={hStatement.code} className='grid w-full gap-3 border-b border-border/70 py-4 md:grid-cols-[7rem_1fr_10rem]'>
+			<div>
+				<p className='font-mono text-sm text-primary'>{hStatement.code}</p>
 			</div>
-			<div className='w-7/12 text-left'>
-				<p>{hStatement.text}</p>
+			<div>
+				<p className='text-sm leading-6 text-foreground'>{hStatement.text}</p>
 			</div>
-			<div className='w-3/12 flex flex-row justify-center items-center'>
-				<p>{hStatement.pictograms.map((pictText) => pictogramElement(pictText))}</p>
+			<div className='flex flex-row items-center gap-2 md:justify-end'>
+				{hStatement.pictograms.map((pictText) => pictogramElement(pictText))}
 			</div>
 		</div>
 	);

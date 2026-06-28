@@ -30,7 +30,7 @@ export default function CopyToClipboardButton(props: inputProps) {
 			onClick={() => {
 				handleClick();
 			}}
-			className=' w-56 bg-transparent hover:bg-amber-500 font-mono text-grey-700 hover:text-white py-2 px-4 border-2 border-amber-500 hover:border-transparent rounded transform active:scale-x-75 transition-transform'
+			className='h-11 w-full border border-primary bg-primary px-5 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-[background-color,transform] hover:bg-chart-2 active:translate-y-px focus:outline-none focus:ring-2 focus:ring-ring/60 md:w-56'
 		>
 			{buttonText}
 		</button>

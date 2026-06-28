@@ -4,8 +4,7 @@ export function wikipediaSearchHoverText() {
 
 export function manualGHSParsingHoverText() {
 	return (
-		"Please enter your respective H and P code numbers below. Separate them by '-' and connect statements by " +
-		" as used by Wikipedia. In rare cases, the combinatory P statements of Wikipedia do not follow the European Law. These will be ignored and not shown/copied. \n Example: '225-304-315-316d-372+373-310'"
+		"Enter codes separated by dashes. Normal hyphens, Wikipedia dashes, and H/P prefixes are accepted. Keep combined statements with '+'. Example: H225-H304 or P301+330+331-P310."
 	);
 }
 

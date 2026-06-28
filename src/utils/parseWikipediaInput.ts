@@ -1,17 +1,9 @@
 export default function parseWikipediaInput(input: string) {
-	const result: string[] = [];
-
-	const tempInputArray = input.split(" ");
-
-	if (tempInputArray.length > 1) tempInputArray.shift();
-
-	const cleanedInput = tempInputArray[0];
-
-	const groups = cleanedInput.split('​‐');
-
-	for (const group of groups) {
-		result.push(group.trim().replace(/\[.*?\]/g, ""));
-	}
-
-	return result;
+	return input
+		.replace(/\[.*?\]/g, "")
+		.replace(/[\u200B-\u200D\uFEFF]/g, "")
+		.replace(/[‐‑‒–—−]/g, "-")
+		.split(/\s*-\s*/)
+		.map((group) => group.trim().replace(/\b[HP](?=\d{3})/gi, ""))
+		.filter(Boolean);
 }
