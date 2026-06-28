@@ -3,7 +3,7 @@ import pictograms from "../pictograms";
 
 export default function createElbOutput(hStatements: hStatement[], pStatements: pStatement[]) {
 	function pictogramElement(pictogramName: string) {
-		let imgSrc = pictograms()
+		const imgSrc = pictograms()
 			.filter((p) => p.name === pictogramName)
 			.map((p) => p.imgLocal)[0];
 

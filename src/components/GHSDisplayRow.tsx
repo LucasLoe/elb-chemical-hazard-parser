@@ -19,7 +19,7 @@ export function PRow(pStatement: pStatement) {
 
 export function HRow(hStatement: hStatement) {
 	const pictogramElement = (pictogramName: string) => {
-		let imgWebSrc = pictograms()
+		const imgWebSrc = pictograms()
 			.filter((p) => p.name === pictogramName)
 			.map((p) => p.imgWeb)[0];
 		return (
